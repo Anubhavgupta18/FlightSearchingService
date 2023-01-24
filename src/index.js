@@ -2,6 +2,7 @@ const express = require('express');
 const { PORT } = require('./config/serverConfig.js');
 const bodyParser = require('body-parser');
 
+
 const createAndStartServer = async () => {
     //create the express object
     const app = express();
@@ -12,7 +13,7 @@ const createAndStartServer = async () => {
 
     app.listen(PORT, () => {
         console.log(`server started on ${PORT}`);
-        
+
     });
 };
 

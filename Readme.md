@@ -18,6 +18,8 @@
     "dialect": "mysql"
   }
 }
-
 ```
+- Now run a command in the terminal `npx sequelize db:create` inside the `/src` directory of your project to setup the database and then execute `npx sequelize db:migrate`
+
+
     
