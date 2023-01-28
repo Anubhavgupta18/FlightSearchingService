@@ -1,12 +1,13 @@
 const express = require('express');
 const { PORT } = require('./config/serverConfig.js');
 const bodyParser = require('body-parser');
-
+const ApiRoutes = require('./routes/index');
 
 const createAndStartServer = async () => {
     //create the express object
     const app = express();
 
+    app.use('/api', ApiRoutes);
     //setting up middleware
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}));

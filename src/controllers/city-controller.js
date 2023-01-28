@@ -11,16 +11,16 @@ const create = async (req, res) => {
             data: city,
             success: true,
             message: "Created city successfully",
-            err:{}
-        })
+            err: {}
+        });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             data: {},
             success: false,
-            message:"Not able to create a city",
-            err:error
-        })
+            message: "Not able to create a city",
+            err: error
+        });
     }
 }
 
