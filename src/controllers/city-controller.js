@@ -94,7 +94,7 @@ const get = async (req, res) => {
 
 const getAll = async (req, res) => {
     try {
-        const cities = await City.getAllCities();
+        const cities = await City.getAllCities(req.query);
         return res.status(200).json({
             data: cities,
             success: true,
@@ -106,7 +106,7 @@ const getAll = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message:"Not able to fetch a city",
+            message:"Not able to the cities",
             err:error
         }) 
     }

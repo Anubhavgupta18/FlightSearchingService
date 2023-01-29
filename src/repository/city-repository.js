@@ -1,5 +1,5 @@
 const { City } = require('../models/index');
-
+const { Op } = require('sequelize');
 class cityRepository {
     async createCity({ name }) {
         try {
@@ -27,19 +27,17 @@ class cityRepository {
             throw { error };
         }
     }
-    async getCity(cityId)
-    {
+    async getCity(cityId) {
         try {
             const city = await City.findByPk(cityId);
             return city;
         }
-        catch (error) { 
+        catch (error) {
             console.log('something went wrong in the repository layer');
             throw { error };
         }
     }
-    async updateCity(cityId,data)
-    {
+    async updateCity(cityId, data) {
         try {
             // this methody to update a city does not return a city object
             // const city = await City.update(data, {
@@ -59,8 +57,19 @@ class cityRepository {
             throw { error };
         }
     }
-    async getAllCities() {
+    async getAllCities(filter) {//filter can be empty
+
         try {
+            if (filter.name) {
+                const cities = await City.findAll({
+                    where: {
+                        name: {
+                            [Op.startsWith]: filter.name
+                        }
+                    }
+                });
+                return cities;
+            }
             const cities = await City.findAll();
             return cities;
         } catch (error) {
