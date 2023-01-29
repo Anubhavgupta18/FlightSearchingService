@@ -30,10 +30,10 @@ class cityRepository {
     async getCity(cityId)
     {
         try {
-            const city = await City.findbypk(cityId);
+            const city = await City.findByPk(cityId);
             return city;
         }
-        catch (error) {
+        catch (error) { 
             console.log('something went wrong in the repository layer');
             throw { error };
         }
@@ -41,11 +41,17 @@ class cityRepository {
     async updateCity(cityId,data)
     {
         try {
-            const city = await City.update(data, {
-                where: {
-                    id:cityId
-                }
-            });
+            // this methody to update a city does not return a city object
+            // const city = await City.update(data, {
+            //     where: {
+            //         id:cityId
+            //     }
+            // });
+
+            // This method will return city object also
+            const city = await City.create({ id: cityId });
+            city.name = data.name;
+            await city.save();
             return city;
         }
         catch (error) {

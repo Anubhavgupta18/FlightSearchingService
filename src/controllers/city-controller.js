@@ -6,13 +6,14 @@ const City = new cityService();
 //data-> req.body
 const create = async (req, res) => {
     try {
-        const city = City.createCity(req.body);
+        const city = await City.createCity(req.body);
         return res.status(201).json({
             data: city,
             success: true,
             message: "Created city successfully",
             err: {}
         });
+
     } catch (error) {
         console.log(error);
         return res.status(500).json({
@@ -29,7 +30,7 @@ const create = async (req, res) => {
 // id-> /flights/:id
 const update = async (req, res) => {
     try {
-        const city = City.updateCity(req.params.id,req.body);
+        const city = await City.updateCity(req.params.id,req.body);
         return res.status(200).json({
             data: city,
             success: true,
@@ -51,7 +52,7 @@ const update = async (req, res) => {
 //id-> /flights/:id
 const destroy = async (req, res) => {
     try {
-        const response = City.deleteCity(req.params.id);
+        const response = await City.deleteCity(req.params.id);
         return res.status(200).json({
             data: response,
             success: true,
@@ -73,13 +74,13 @@ const destroy = async (req, res) => {
 //id-> /flights/:id
 const get = async (req, res) => {
     try {
-        const city = City.getCity(req.params.id);
+        const city = await City.getCity(req.params.id);
         return res.status(200).json({
             data: city,
             success: true,
             message: "fetched city successfully",
-            err:{}
-        })
+            err: {}
+        });
     } catch (error) {
         console.log(error);
         return res.status(500).json({
