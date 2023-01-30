@@ -19,7 +19,21 @@
   }
 }
 ```
-- Now run a command in the terminal `npx sequelize db:create` inside the `/src` directory of your project to setup the database and then execute `npx sequelize db:migrate`
+- Once you've added your db config as listed above, go to the src folder from your terminal and execute `npx sequelize db:create` and then execute `npx sequelize db:migrate`
 
+## Tables
 
-    
+### City
+- name
+- id
+- createdAt
+- updatedAt
+
+### Airport
+- name
+- address
+- cityId
+- createdAt
+- updatedAt 
+
+- Relationships -> A city has many airport and a airport belongs to a city (one to many).
