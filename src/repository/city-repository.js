@@ -13,6 +13,19 @@ class cityRepository {
             throw { error };
         }
     }
+    async createCities({ name })
+    {
+        try {
+            const cities = await City.create({
+                name
+            });
+            return cities;
+        }
+        catch (error) {
+            console.log('something went wrong in the repository layer');
+            throw { error };
+        }
+    }
     async deleteCity(cityId) {
         try {
             await City.destroy({
