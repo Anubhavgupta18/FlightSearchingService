@@ -48,8 +48,8 @@ module.exports = flightService;
     airplaneId,
     departureAirportId,
     arrivalAirportId,
-    departureDateTime,
-    arrivalDateTime,
+    departureTime,
+    arrivalTime,
     price,
     totalSeats -> airplane
  }
