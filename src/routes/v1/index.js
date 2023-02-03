@@ -19,4 +19,6 @@ router.delete('/airport/:id', airportController.destroy);
 
 router.post('/flights',flightMiddleware.validateCreateFlight, flightController.create);
 router.get('/flights', flightController.getAll);
+router.get('/flights/:id', flightController.get);
+
 module.exports = router;
